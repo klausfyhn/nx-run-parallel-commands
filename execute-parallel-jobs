@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-printf 'Executing jobs on main:\n'
-echo "$MAIN_JOBS"
+main_jobs="$1"
+printf 'Executing jobs on main:\n\n'
+echo "$main_jobs"
+printf '\n\n'
 
-printf 'Executing jobs on agents:\n'
-echo "$AGENT_JOBS"
+agent_jobs="$2"
+printf 'Executing jobs on agents:\n\n'
+echo "$agent_jobs"
+printf '\n\n'

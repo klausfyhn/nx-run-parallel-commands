@@ -11,9 +11,6 @@ inputs:
 
 runs:
   using: composite
-  env:
-    MAIN_JOBS: ${{ inputs.main-jobs }}
-    AGENT_JOBS: ${{ inputs.agent-jobs }}
   steps:
     - name: Run parallel jobs
       run: |
