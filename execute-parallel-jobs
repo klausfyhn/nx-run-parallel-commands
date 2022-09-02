@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+IFS=$'\n'
+
 main_jobs="$1"
 printf 'Executing jobs on main:\n\n'
 echo "$main_jobs"
@@ -8,4 +10,27 @@ printf '\n\n'
 agent_jobs="$2"
 printf 'Executing jobs on agents:\n\n'
 echo "$agent_jobs"
-printf '\n\n'
+
+jobs=()
+
+for job in $main_jobs; do
+    jobs+=("NX_CLOUD_DISTRIBUTED_EXECUTION=false $job")
+done
+
+for job in $agent_jobs; do
+    jobs+=("NX_CLOUD_DISTRIBUTED_EXECUTION=true $job")
+done
+
+pids=()
+for job in "${jobs[@]}"; do
+    eval "$job" &
+    pids+=($!)
+done
+
+for pid in ${pids[*]}; do
+    if ! wait "$pid"; then
+        exit 1
+    fi
+done
+
+exit 0
