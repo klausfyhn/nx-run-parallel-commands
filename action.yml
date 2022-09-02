@@ -1,0 +1,21 @@
+---
+name: NX run parallel commands
+
+inputs:
+  main-jobs:
+    type: string
+    required: false
+  agent-jobs:
+    type: string
+    required: false
+
+runs:
+  using: composite
+  env:
+    MAIN_JOBS: ${{ inputs.main-jobs }}
+    AGENT_JOBS: ${{ inputs.agent-jobs }}
+  steps:
+    - name: Run parallel jobs
+      run: |
+        ./execute-parallel-jobs
+      shell: bash
