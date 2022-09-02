@@ -14,5 +14,7 @@ runs:
   steps:
     - name: Run parallel jobs
       run: |
-        execute-parallel-jobs "${{ inputs.main-jobs }}" "${{ inputs.agent-jobs }}"
+        ${{ github.action_path }}/execute-parallel-jobs \
+          "${{ inputs.main-jobs }}" \
+          "${{ inputs.agent-jobs }}"
       shell: bash
