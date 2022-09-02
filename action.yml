@@ -14,5 +14,14 @@ runs:
   steps:
     - name: Run parallel jobs
       run: |
-        ./execute-parallel-jobs "${{ inputs.main-jobs }}" "${{ inputs.agent-jobs }}"
+        main_jobs="${{ inputs.main-jobs }}"
+        printf 'Executing jobs on main:\n\n'
+        echo "$main_jobs"
+        printf '\n\n'
+
+        agent_jobs="${{ inputs.agent-jobs }}"
+        printf 'Executing jobs on agents:\n\n'
+        echo "$agent_jobs"
+        printf '\n\n'
+
       shell: bash
