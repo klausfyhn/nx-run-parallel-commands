@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
-echo 'Hello, World!'
-npm --version
-node --version
+printf 'Executing jobs on main:\n'
+echo "$MAIN_JOBS"
+
+printf 'Executing jobs on agents:\n'
+echo "$AGENT_JOBS"
