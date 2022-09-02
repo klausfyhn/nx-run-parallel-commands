@@ -14,5 +14,5 @@ runs:
   steps:
     - name: Run parallel jobs
       run: |
-        ./execute-parallel-jobs
+        ./execute-parallel-jobs "${{ inputs.main-jobs }}" "${{ inputs.agent-jobs }}"
       shell: bash
