@@ -1,1 +1,1 @@
-# nx-run-parallel-commands
+# nx-run-parallel-commands-action
